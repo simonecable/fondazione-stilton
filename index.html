@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fondazione Geronimo Stilton | Elisabetta Dami</title>
+    <meta name="description" content="Sito ufficiale della Fondazione Geronimo Stilton, fondata dalla scrittrice Elisabetta Dami per promuovere la lettura, l'educazione e il sostegno ai bambini.">
+    <!-- Google Fonts: Quicksand per un aspetto amichevole, allegro e leggibile -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Collegamento al foglio di stile -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Intestazione del sito (Header) -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#home" class="logo-link" id="logo-home">
+                <img src="logoorizzontale.png" alt="Fondazione Geronimo Stilton" class="logo-img" onerror="this.src='https://placehold.co/180x60/f1c40f/2c3e50?text=Fondazione';">
+            </a>
+            <div class="header-right" style="display: flex; align-items: center; gap: 24px;">
+                <nav class="nav-menu" id="main-nav">
+                    <a href="#home" class="nav-item active" id="nav-home" data-i18n="nav_home">Home</a>
+                    <a href="#chi-siamo" class="nav-item" id="nav-about" data-i18n="nav_about">Chi siamo</a>
+                    <a href="#attivita" class="nav-item" id="nav-events" data-i18n="nav_events">Attività</a>
+                    <a href="#sostienici" class="nav-item" id="nav-donations" data-i18n="nav_donations">Sostienici</a>
+                    <a href="#contatti" class="nav-item" id="nav-contact" data-i18n="nav_contact">Contatti</a>
+                </nav>
+                <div class="lang-switcher">
+                    <button class="btn-lang active" data-lang="it">IT</button>
+                    <button class="btn-lang" data-lang="en">EN</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenuto Principale (Main) -->
+    <main class="main-content">
+        
+        <!-- VISTA PUBBLICA (Homepage) -->
+        <div id="public-view" class="view-section">
+            
+            <!-- Sezione di Benvenuto (Hero) -->
+            <section id="home-hero" class="hero-section">
+                <div class="hero-content">
+                    <img src="logo%20geronimo%20stilton.png" alt="Logo Fondazione Geronimo Stilton" class="hero-logo-img">
+                    <h1 class="hero-title" data-i18n="hero_title">BENVENUTI NEL NOSTRO MONDO!</h1>
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">Insieme, tutto diventa possibile!</p>
+                    <p class="hero-description" data-i18n="hero_description">
+                        La Fondazione Geronimo Stilton sostiene progetti di solidarietà, salute e istruzione per l'infanzia, trasmettendo i valori positivi dell'amicizia, del rispetto e dell'amore per la lettura.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sezione Chi Siamo & Elisabetta Dami -->
+            <section id="chi-siamo" class="about-section">
+                <div class="section-container">
+                    <h2 class="section-title" data-i18n="about_title">CHI SIAMO</h2>
+                    <p class="about-author-subtitle" data-i18n="about_subtitle">di Elisabetta Dami</p>
+                    
+                    <div class="about-layout">
+                        <div class="about-image-col">
+                            <img src="ElisabettaDAMI.jpg" alt="Elisabetta Dami" class="author-photo">
+                        </div>
+                        <div class="about-text-col">
+                            <div class="letter-content" id="about-letter-box" data-i18n="about_letter_html">
+                                <p>Tanti anni fa ho scoperto che non avrei potuto avere figli. Per esprimere in un modo diverso il mio senso materno, ho cominciato a fare volontariato in un ospedale pediatrico, con il desiderio di donare un sorriso ai bambini malati.</p>
+                                <p>Così sono nate le storie di Geronimo Stilton: un roditore buffo, timido e tenero, un giornalista che vive nell’Isola dei Topi, ma viaggia in tutto il mondo, sempre pronto a incontrare nuovi amici, esplorare nuove realtà e tendere la zampa a chi ha bisogno.</p>
+                                <p>Storie avventurose create per donare un sorriso, ma anche coraggio e speranza ai ragazzi in ospedale. Storie tutte a lieto fine, perché Geronimo è un topo ottimista, capace di vedere sempre il lato bello e buono della vita, anche nei momenti difficili.</p>
+                                <p>Storie nate dal cuore… oggi tradotte in più di 50 lingue, perché sanno arrivare al cuore di milioni di lettori nel mondo.</p>
+                                <p>Ancora oggi, dedico tutto il mio tempo libero al volontariato: incontro i ragazzi negli ospedali e nelle scuole, sono al fianco delle Istituzioni italiane, mi impegno in progetti solidali e nella difesa della natura.</p>
+                                <p>Per questo, nel 2019, ho dato vita alla Fondazione Geronimo Stilton.</p>
+                                <p>Perché quando si riceve tanto, nasce il desiderio di restituire. Perché solo insieme, ognuno secondo le proprie possibilità, possiamo costruire un mondo più gentile, più giusto e più felice.</p>
+                                <p>Grazie per essere qui oggi. Grazie per condividere con me, con Geronimo e con la nostra Fondazione valori importanti come amicizia, gentilezza, solidarietà, impegno e rispetto.</p>
+                                <p>Continuiamo a volare insieme sulle ali della fantasia, è bello sognare insieme!</p>
+                                <div class="letter-signature">
+                                    <p>Con amicizia e affetto,</p>
+                                    <strong>Elisabetta Dami</strong>
+                                    <span>Presidente della Fondazione Geronimo Stilton</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sezione Attività -->
+            <section id="attivita" class="events-section">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title" data-i18n="events_title">ATTIVITÀ</h2>
+                    </div>
+                    
+                    <div class="events-description" data-i18n="events_description_html" style="margin-bottom: 40px; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; display: flex; flex-direction: column; gap: 15px;">
+                        <p>La Fondazione Geronimo Stilton collabora con le Istituzioni italiane, le scuole, gli ospedali e varie associazioni benefiche.</p>
+                        <p>Incontriamo ragazze e ragazzi per promuovere l’amore per la lettura e accompagnarli alla scoperta dei valori universali come lealtà, onestà, sincerità, generosità e solidarietà, amicizia, gentilezza, amore per la natura, rispetto per se stessi e gli altri, per la famiglia e la scuola, per le istituzioni e la legalità.</p>
+                    </div>
+
+                    <!-- Griglia degli incontri popolata dinamicamente via JS -->
+                    <div class="events-grid" id="events-display-grid">
+                        <!-- Le card verranno inserite da app.js -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sezione Sostienici -->
+            <section id="sostienici" class="donations-section">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title" data-i18n="donations_title">SOSTIENICI</h2>
+                        <p class="section-tagline" data-i18n="donations_tagline" style="margin-top: 15px; font-weight: 600; color: var(--accent-color); font-size: 1.15rem;">Sostieni i nostri progetti, insieme tutto è possibile.</p>
+                    </div>
+                    
+                    <div class="donations-grid">
+                        <!-- Card IBAN -->
+                        <div class="donation-card iban-card">
+                            <div class="donation-icon">🏦</div>
+                            <h3 class="donation-card-title" data-i18n="donations_iban_title">Bonifico Bancario</h3>
+                            <p class="donation-card-desc" data-i18n="donations_iban_desc">Fai un bonifico diretto sul conto corrente della Fondazione.</p>
+                            <div class="donation-details">
+                                <div class="detail-item"><strong data-i18n="donations_beneficiary">Beneficiario:</strong> <span id="pub-don-beneficiario">-</span></div>
+                                <div class="detail-item"><strong>IBAN:</strong> <span id="pub-don-iban" class="iban-text">-</span></div>
+                                <div class="detail-item"><strong data-i18n="donations_bank">Banca:</strong> <span id="pub-don-banca">-</span></div>
+                                <div class="detail-item"><strong>BIC/SWIFT:</strong> <span id="pub-don-swift">-</span></div>
+                            </div>
+                            <button id="btn-copy-iban" class="btn btn-secondary btn-block" data-i18n="donations_copy_btn">📋 Copia IBAN</button>
+                        </div>
+
+                        <!-- Card PayPal -->
+                        <div class="donation-card paypal-card">
+                            <div class="donation-icon">💳</div>
+                            <h3 class="donation-card-title">PayPal</h3>
+                            <p class="donation-card-desc" data-i18n="donations_paypal_desc">Sostienici in modo rapido e sicuro utilizzando il tuo saldo PayPal o carta.</p>
+                            <div class="donation-details-spacer"></div>
+                            <a id="pub-don-paypal-btn" href="#" target="_blank" class="btn btn-primary btn-block btn-paypal" data-i18n="donations_paypal_btn">Dona con PayPal</a>
+                        </div>
+
+                        <!-- Card Apple Pay & Google Pay -->
+                        <div class="donation-card mobilepay-card">
+                            <div class="donation-icon">📱</div>
+                            <h3 class="donation-card-title" data-i18n="donations_wallets_title">Digital Wallets</h3>
+                            <p class="donation-card-desc" data-i18n="donations_wallets_desc">Usa Apple Pay o Google Pay per una donazione ultra-rapida e sicura.</p>
+                            <div class="donation-details-spacer"></div>
+                            <div class="mobile-pay-buttons">
+                                <button id="pub-don-apple-btn" class="btn-apple-pay">
+                                    <span class="apple-pay-logo"> Pay</span>
+                                </button>
+                                <button id="pub-don-google-btn" class="btn-google-pay">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="Google Pay" class="google-pay-logo">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sezione Contatti -->
+            <section id="contatti" class="contact-section">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title" data-i18n="contact_title">CONTATTI</h2>
+                    </div>
+                    <div class="contact-form-wrapper" style="max-width: 550px; margin: 0 auto;">
+                        <div class="contact-form-container">
+                            <form id="contact-form" class="simple-form" onsubmit="event.preventDefault();">
+                                <div class="form-group">
+                                    <label for="contact-name" data-i18n="contact_name_label">Nome</label>
+                                    <input type="text" id="contact-name" placeholder="Il tuo nome" data-i18n-placeholder="contact_name_placeholder" required autocomplete="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email" data-i18n="contact_email_label">Email</label>
+                                    <input type="email" id="contact-email" placeholder="La tua email" data-i18n-placeholder="contact_email_placeholder" required autocomplete="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-message" data-i18n="contact_message_label">Messaggio</label>
+                                    <textarea id="contact-message" placeholder="Scrivi qui il tuo messaggio..." data-i18n-placeholder="contact_message_placeholder" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block" id="btn-send-contact" data-i18n="contact_send_btn">Invia Messaggio</button>
+                            </form>
+                        </div>
+                        <div class="contact-email-active" style="text-align: center; margin-top: 30px; font-size: 1.15rem; font-weight: 600;">
+                            ✉️ <a href="mailto:info@fondazionegeronimostilton.it" class="active-email-link" style="color: var(--accent-color); text-decoration: underline;">info@fondazionegeronimostilton.it</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- AREA RISERVATA (Hidden/Admin View) -->
+        <div id="admin-view" class="view-section hidden">
+            
+            <!-- 1. Schermata di Login -->
+            <section id="admin-login-view" class="admin-login-section">
+                <div class="login-card">
+                    <div class="login-header">
+                        <div class="login-icon">🔑</div>
+                        <h2 class="login-title">Accesso Area Riservata</h2>
+                        <p class="login-subtitle">Inserisci le credenziali per gestire gli incontri della Fondazione.</p>
+                    </div>
+                    <form id="login-form" class="simple-form">
+                        <div class="form-group">
+                            <label for="login-username">Nome Utente</label>
+                            <input type="text" id="login-username" placeholder="Inserisci username" required autocomplete="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="Inserisci password" required autocomplete="current-password">
+                        </div>
+                        <div id="login-error-msg" class="error-message hidden">Credenziali non valide. Riprova.</div>
+                        <button type="submit" class="btn btn-primary btn-block" id="btn-login-submit">Accedi</button>
+                        <a href="#home" class="back-link">Torna alla Homepage</a>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 2. Pannello di Amministrazione (Dashboard) -->
+            <section id="admin-dashboard-view" class="admin-dashboard-section hidden">
+                <div class="dashboard-container">
+                    <div class="dashboard-header">
+                        <div>
+                            <h1 class="dashboard-title">Pannello Amministrativo</h1>
+                            <p class="dashboard-subtitle">Aggiungi, modifica o elimina gli incontri della Fondazione.</p>
+                        </div>
+                        <button class="btn btn-outline" id="btn-logout">Esci / Logout</button>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Colonna Form per Inserire Incontro -->
+                        <div class="dashboard-card">
+                            <h2 class="form-title">Aggiungi Nuovo Incontro</h2>
+                            <form id="add-event-form" class="simple-form">
+                                <div class="form-group">
+                                    <label for="event-title-it">Titolo Incontro (Italiano)</label>
+                                    <input type="text" id="event-title-it" placeholder="Es. Incontro all'Ospedale Pediatrico" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-title-en">Titolo Incontro (Inglese)</label>
+                                    <input type="text" id="event-title-en" placeholder="Es. Animated reading..." required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-date">Data Evento</label>
+                                    <input type="date" id="event-date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-desc-it">Breve Descrizione (Italiano)</label>
+                                    <textarea id="event-desc-it" placeholder="Scrivi un breve riassunto dell'evento in italiano (max 3-4 righe)..." rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-desc-en">Breve Descrizione (Inglese)</label>
+                                    <textarea id="event-desc-en" placeholder="Write a short summary in English..." rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-image">Seleziona Foto</label>
+                                    <input type="file" id="event-image" accept="image/*" required>
+                                    <div class="file-help">Seleziona un'immagine. Verrà compressa automaticamente per risparmiare spazio.</div>
+                                    <div id="image-preview-container" class="image-preview hidden">
+                                        <img id="image-preview-img" src="" alt="Anteprima immagine">
+                                        <button type="button" class="btn-remove-preview" id="btn-clear-img">Rimuovi foto</button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block" id="btn-save-event">Salva e Pubblica</button>
+                            </form>
+                        </div>
+
+                        <!-- Colonna Elenco Incontri per Gestione (Eliminazione) -->
+                        <div class="dashboard-card">
+                            <h2 class="form-title">Gestione Incontri Esistenti</h2>
+                            <div class="admin-events-list" id="admin-events-list">
+                                <!-- Elementi gestiti dinamicamente via app.js -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Configurazione Donazioni -->
+                    <div class="dashboard-card admin-donations-card" style="margin-top: 40px;">
+                        <h2 class="form-title">Configurazione Credenziali Donazioni</h2>
+                        <form id="admin-donations-form" class="simple-form">
+                            <div class="admin-donations-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                                <!-- IBAN Form Section -->
+                                <div class="admin-form-section">
+                                    <h3 style="font-size: 1.15rem; margin-bottom: 15px; color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">🏦 Bonifico Bancario (IBAN)</h3>
+                                    <div class="form-group">
+                                        <label for="admin-don-beneficiario">Intestatario Beneficiario</label>
+                                        <input type="text" id="admin-don-beneficiario" placeholder="Es. Fondazione Geronimo Stilton" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-don-iban">Codice IBAN</label>
+                                        <input type="text" id="admin-don-iban" placeholder="Es. IT99C..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-don-banca">Istituto Bancario</label>
+                                        <input type="text" id="admin-don-banca" placeholder="Es. Banca dei Formaggi S.p.A." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-don-swift">Codice BIC/SWIFT</label>
+                                        <input type="text" id="admin-don-swift" placeholder="Es. BAFOIT2MXXX" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- PayPal Form Section -->
+                                <div class="admin-form-section">
+                                    <h3 style="font-size: 1.15rem; margin-bottom: 15px; color: #0070ba; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">💳 PayPal</h3>
+                                    <div class="form-group">
+                                        <label for="admin-don-paypal-email">Email Associata a PayPal</label>
+                                        <input type="email" id="admin-don-paypal-email" placeholder="Es. donazioni@fondazionegeronimostilton.it" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-don-paypal-link">Link PayPal.Me (opzionale)</label>
+                                        <input type="url" id="admin-don-paypal-link" placeholder="Es. https://paypal.me/fondazionestilton">
+                                    </div>
+                                </div>
+                                
+                                <!-- Google & Apple Pay Form Section -->
+                                <div class="admin-form-section">
+                                    <h3 style="font-size: 1.15rem; margin-bottom: 15px; color: var(--text-color); border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">📱 Apple Pay & Google Pay</h3>
+                                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.5;">
+                                        Apple Pay e Google Pay sul web richiedono un gateway di pagamento come Stripe. Incolla qui sotto il tuo <strong>Stripe Payment Link</strong> o link simile per abilitarli istantaneamente.
+                                    </p>
+                                    <div class="form-group">
+                                        <label for="admin-don-stripe-link">Link di Pagamento Stripe</label>
+                                        <input type="url" id="admin-don-stripe-link" placeholder="Es. https://donate.stripe.com/..." required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 30px; text-align: right; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                                <button type="submit" class="btn btn-primary" id="btn-save-donations" style="padding: 12px 35px; border-radius: var(--radius-lg);">Salva Configurazione Donazioni</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer del sito -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-copy">&copy; 2026 Fondazione Geronimo Stilton. <span data-i18n="footer_text">Creato per la scrittrice Elisabetta Dami.</span></p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <span>|</span>
+                <a href="#admin" class="footer-admin-link" id="footer-admin-btn" data-i18n="footer_reserved">Area Riservata</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Collegamento allo script JavaScript -->
+    <script src="app.js?v=2"></script>
+</body>
+</html>

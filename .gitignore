@@ -1,0 +1,14 @@
+# Documenti e file di lavoro privati
+MODIFICHE FONDAZIONE STILTON_last.docx
+Fondazione_Auth_Code.xlsx
+*.docx
+*.xlsx
+
+# Script temporanei di analisi
+read_docx.py
+docx_content.txt
+
+# File di sistema e log
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,1224 @@
+/* ==========================================================================
+   DESIGN SYSTEM - FONDAZIONE GERONIMO STILTON
+   Stile: Sobrio, Semplicissimo, Allegro
+   ========================================================================== */
+
+/* Variabili Globali per Colori, Font e Spazi */
+:root {
+    --bg-color: #FFFDF6;       /* Crema morbido, caldo e accogliente */
+    --text-color: #2C3E50;     /* Navy profondo, eccellente leggibilità */
+    --text-muted: #5D6D7E;     /* Grigio neutro per sottotitoli */
+    --primary-color: #F39C12;  /* Oro caldo, solare e allegro */
+    --primary-light: #F1C40F;  /* Giallo solare brillante */
+    --accent-color: #E67E22;   /* Arancio caldo per pulsanti e richiami */
+    --accent-hover: #D35400;   /* Arancio scuro per l'hover */
+    --card-bg: #FFFFFF;        /* Bianco puro per far risaltare i contenuti */
+    --border-color: #EAECEE;   /* Grigio leggerissimo per i bordi */
+    --success-color: #2ECC71;  /* Verde morbido per conferme */
+    --danger-color: #E74C3C;   /* Rosso morbido per eliminazione ed errori */
+    --radius-lg: 16px;         /* Angoli molto arrotondati, amichevoli e morbidi */
+    --radius-md: 10px;
+    --shadow-soft: 0 8px 24px rgba(243, 156, 18, 0.08); /* Ombra calda e leggera */
+    --shadow-hover: 0 12px 30px rgba(243, 156, 18, 0.15);
+    --font-main: 'Quicksand', sans-serif;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset di Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Classi di Utilità */
+.hidden {
+    display: none !important;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* ==========================================================================
+   HEADER & NAVBAR (Sobria ed Elegante)
+   ========================================================================== */
+.site-header {
+    background-color: rgba(255, 253, 246, 0.95);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid rgba(243, 156, 18, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    padding: 12px 0;
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 85px; /* Logo ingrandito ulteriormente per massima visibilità */
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: -0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-item {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: var(--radius-md);
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--accent-color);
+    background-color: rgba(243, 156, 18, 0.08);
+}
+
+/* ==========================================================================
+   CONTENUTO PRINCIPALE (Layout Generale)
+   ========================================================================== */
+.main-content {
+    min-height: calc(100vh - 150px);
+}
+
+.view-section {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 45px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    margin: 8px auto 0 auto;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   HERO SECTION (Allegra e Accattivante)
+   ========================================================================== */
+.hero-section {
+    background: radial-gradient(circle at top right, rgba(241, 196, 15, 0.15), rgba(255, 253, 246, 0));
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-badge {
+    background-color: rgba(243, 156, 18, 0.1);
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 24px;
+    border: 1px solid rgba(243, 156, 18, 0.15);
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Pulsanti */
+.btn {
+    font-family: var(--font-main);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: var(--radius-lg);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background-color: var(--text-color); /* Navy per massimo contrasto con testo bianco */
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.15);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.3);
+    color: #FFFFFF;
+}
+
+.btn-secondary {
+    background-color: rgba(243, 156, 18, 0.1);
+    color: var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(243, 156, 18, 0.18);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.btn-outline:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: var(--text-muted);
+}
+
+/* ==========================================================================
+   CHI SIAMO SECTION (Pura Semplicità)
+   ========================================================================== */
+.about-section {
+    background-color: rgba(243, 156, 18, 0.03);
+    border-top: 1px solid rgba(243, 156, 18, 0.05);
+    border-bottom: 1px solid rgba(243, 156, 18, 0.05);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.about-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(243, 156, 18, 0.05);
+    transition: var(--transition-smooth);
+}
+
+.about-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.card-text {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   ULTIMI INCONTRI - EVENTS GRID (Allegro e Colorato)
+   ========================================================================== */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.event-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(243, 156, 18, 0.05);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.event-img-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(243, 156, 18, 0.05);
+}
+
+.event-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.event-card:hover .event-card-img {
+    transform: scale(1.04);
+}
+
+.event-info {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.event-date {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.event-card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.event-card-desc {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Messaggio se la griglia eventi è vuota */
+.empty-events {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   CONTACT SECTION (Semplice e Pulito)
+   ========================================================================== */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.contact-info {
+    padding-right: 20px;
+}
+
+.contact-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.contact-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.contact-icon {
+    font-size: 1.4rem;
+}
+
+.contact-form-container {
+    background-color: var(--card-bg);
+    padding: 35px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(243, 156, 18, 0.05);
+}
+
+/* Moduli di Input Generici */
+.simple-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group textarea {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.1);
+}
+
+.form-group input[type="file"] {
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+}
+
+.file-help {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: -4px;
+}
+
+/* Anteprima Immagine */
+.image-preview {
+    margin-top: 12px;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px dashed var(--primary-color);
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(243, 156, 18, 0.02);
+}
+
+.image-preview img {
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.btn-remove-preview {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--danger-color);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    margin-top: 8px;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   AREA RISERVATA - LOGIN & PANEL (Semplicissimo)
+   ========================================================================== */
+.admin-login-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+}
+
+.login-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(243, 156, 18, 0.05);
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.login-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.login-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.back-link {
+    text-align: center;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Pannello Admin Dashboard */
+.admin-dashboard-section {
+    padding: 40px 20px;
+}
+
+.dashboard-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(243, 156, 18, 0.1);
+    padding-bottom: 24px;
+    margin-bottom: 35px;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .dashboard-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.dashboard-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.dashboard-subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+}
+
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+.dashboard-card {
+    background-color: var(--card-bg);
+    padding: 35px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(243, 156, 18, 0.05);
+}
+
+.form-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--text-color);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 12px;
+}
+
+/* Elenco Incontri Lato Amministratore */
+.admin-events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.admin-event-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-color);
+    transition: var(--transition-smooth);
+}
+
+.admin-event-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.04);
+}
+
+.admin-event-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: #DDD;
+}
+
+.admin-event-details {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.admin-event-title-text {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-event-date-text {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.btn-delete-event {
+    background-color: transparent;
+    color: var(--danger-color);
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.btn-delete-event:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #C0392B;
+}
+
+/* Custom Scrollbar per Lista Admin */
+.admin-events-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.admin-events-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.admin-events-list::-webkit-scrollbar-thumb {
+    background: rgba(243, 156, 18, 0.2);
+    border-radius: 10px;
+}
+
+.admin-events-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(243, 156, 18, 0.4);
+}
+
+/* ==========================================================================
+   FOOTER (Sobrio e Pulito)
+   ========================================================================== */
+.site-footer {
+    background-color: var(--text-color);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 30px 20px;
+    font-size: 0.95rem;
+    border-top: 4px solid var(--primary-color);
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.footer-copy {
+    font-weight: 500;
+}
+
+.footer-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+}
+
+.footer-links a:hover {
+    color: var(--primary-light);
+}
+
+.footer-links span {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive generale ad hoc */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-description {
+        font-size: 1.1rem;
+    }
+    .nav-menu {
+        display: none; /* In un'app semplicissima eliminiamo l'intralcio sui telefoni ed usiamo lo scorrimento o il logo */
+    }
+}
+
+/* ==========================================================================
+   SEZIONE DONAZIONI - PUBLIC & ADMIN
+   ========================================================================== */
+.donations-section {
+    background: linear-gradient(180deg, rgba(255, 253, 246, 0) 0%, rgba(243, 156, 18, 0.04) 100%);
+    border-bottom: 1px solid rgba(243, 156, 18, 0.05);
+}
+
+.donations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.donation-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(243, 156, 18, 0.05);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.donation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.donation-icon {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+}
+
+.donation-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.donation-card-desc {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.donation-details {
+    width: 100%;
+    text-align: left;
+    background-color: var(--bg-color);
+    padding: 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: 24px;
+    font-size: 0.92rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detail-item {
+    color: var(--text-color);
+    word-break: break-all;
+}
+
+.iban-text {
+    font-family: monospace;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.donation-details-spacer {
+    flex-grow: 1;
+}
+
+/* PayPal Button styling */
+.btn-paypal {
+    background: linear-gradient(135deg, #0070ba, #154674);
+    box-shadow: 0 4px 15px rgba(0, 112, 186, 0.2);
+}
+
+.btn-paypal:hover {
+    background: linear-gradient(135deg, #005ea6, #0070ba);
+    box-shadow: 0 6px 20px rgba(0, 112, 186, 0.3);
+}
+
+/* Digital Wallets styling */
+.mobile-pay-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-apple-pay {
+    width: 100%;
+    height: 48px;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.btn-apple-pay:hover {
+    background-color: #222222;
+    transform: translateY(-2px);
+}
+
+.apple-pay-logo {
+    letter-spacing: -0.5px;
+}
+
+.btn-google-pay {
+    width: 100%;
+    height: 48px;
+    background-color: #FFFFFF;
+    color: #3c4043;
+    border: 1px solid #dadce0;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.btn-google-pay:hover {
+    background-color: #f8f9fa;
+    border-color: #ccc;
+    transform: translateY(-2px);
+}
+
+.google-pay-logo {
+    height: 22px;
+    pointer-events: none;
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--text-color);
+    color: #FFFFFF;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    color: var(--primary-light);
+    font-size: 1.2rem;
+}
+
+/* Admin side styles */
+.admin-form-section {
+    background-color: rgba(243, 156, 18, 0.02);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--border-color);
+}
+
+.admin-donations-card .form-group {
+    margin-bottom: 16px;
+}
+
+/* --- SELETTORE DI LINGUA (BILINGUE) --- */
+.lang-switcher {
+    display: flex;
+    background-color: rgba(243, 156, 18, 0.08);
+    padding: 4px;
+    border-radius: 50px;
+    border: 1px solid rgba(243, 156, 18, 0.15);
+    align-items: center;
+}
+
+.btn-lang {
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-color);
+    background-color: transparent;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    line-height: 1;
+}
+
+.btn-lang:hover {
+    color: var(--accent-color);
+}
+
+.btn-lang.active {
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(230, 126, 34, 0.25);
+}
+
+/* Adattamento header per mobile */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .logo-img {
+        height: 60px; /* Ridotto su mobile per risparmiare spazio verticale */
+    }
+}
+
+/* ==========================================================================
+   STILI AGGIUNTIVI PER NUOVI ELEMENTI E LAYOUT
+   ========================================================================== */
+
+/* Logo e Sottotitolo Hero */
+.hero-logo-img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 30px auto;
+    filter: drop-shadow(0 8px 16px rgba(243, 156, 18, 0.15));
+}
+
+.hero-subtitle {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 24px;
+}
+
+/* Layout Chi Siamo */
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.about-image-col {
+    display: flex;
+    justify-content: center;
+}
+
+.author-photo {
+    width: 100%;
+    max-width: 380px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 4px solid #FFFFFF;
+    object-fit: cover;
+}
+
+.about-text-col {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(243, 156, 18, 0.05);
+}
+
+.letter-content p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 16px;
+    color: var(--text-color);
+}
+
+.letter-content p:last-of-type {
+    margin-bottom: 24px;
+}
+
+.letter-signature {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.letter-signature p {
+    font-style: italic;
+    margin-bottom: 4px;
+    color: var(--text-muted);
+}
+
+.letter-signature strong {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.letter-signature span {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+/* Centratura form contatti e link email attivo */
+.contact-form-wrapper {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.contact-email-active {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.active-email-link {
+    color: var(--accent-color);
+    text-decoration: underline;
+    transition: var(--transition-smooth);
+}
+
+.active-email-link:hover {
+    color: var(--accent-hover);
+    text-shadow: 0 2px 8px rgba(230, 126, 34, 0.15);
+}
+
+/* Stile per la descrizione delle attività */
+.events-description {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .author-photo {
+        max-width: 280px;
+    }
+    .about-text-col {
+        padding: 24px;
+    }
+}
