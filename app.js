@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let events = [];
     let compressedImageBase64 = ""; // Memorizza la foto compressa pronta per il salvataggio
     let currentLang = localStorage.getItem('fondazione_lang') || 'it';
+    let isEventsExpanded = false; // Stato espansione griglia eventi
     
     let donations = {}; // Memorizza le credenziali di donazione attive
     const DEFAULT_DONATIONS = {
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_donations: "Sostienici",
             nav_contact: "Contatti",
             
-            hero_title: "BENVENUTI NEL NOSTRO MONDO!",
+            hero_title: "BENVENUTI NEL NOSTRO MONDO",
             hero_subtitle: "Insieme, tutto diventa possibile!",
             hero_description: "La Fondazione Geronimo Stilton sostiene progetti di solidarietà, salute e istruzione per l'infanzia, trasmettendo i valori positivi dell'amicizia, del rispetto e dell'amore per la lettura.",
             
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Continuiamo a volare insieme sulle ali della fantasia, è bello sognare insieme!</p>
                 <div class="letter-signature">
                     <p>Con amicizia e affetto,</p>
+                    <img src="elisabetta.png" alt="Elisabetta Dami" class="signature-img">
                     <strong>Elisabetta Dami</strong>
                     <span>Presidente della Fondazione Geronimo Stilton</span>
                 </div>
@@ -96,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_donations: "Support Us",
             nav_contact: "Contact",
             
-            hero_title: "WELCOME TO OUR WORLD!",
+            hero_title: "WELCOME TO OUR WORLD",
             hero_subtitle: "Together, everything becomes possible!",
             hero_description: "The Geronimo Stilton Foundation supports solidarity, health, and education projects for children, transmitting the positive values of friendship, respect, and love for reading.",
             
@@ -114,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Let's continue to fly together on the wings of imagination, it's beautiful to dream together!</p>
                 <div class="letter-signature">
                     <p>With friendship and affection,</p>
+                    <img src="elisabetta.png" alt="Elisabetta Dami" class="signature-img">
                     <strong>Elisabetta Dami</strong>
                     <span>President of the Geronimo Stilton Foundation</span>
                 </div>
@@ -311,6 +314,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('nav-about')?.classList.add('active');
             } else if (hash === '#attivita') {
                 document.getElementById('nav-events')?.classList.add('active');
+                isEventsExpanded = false;
+                renderEvents();
             } else if (hash === '#sostienici') {
                 document.getElementById('nav-donations')?.classList.add('active');
             } else if (hash === '#contatti') {
@@ -365,7 +370,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         } else {
-            eventsDisplayGrid.innerHTML = sortedEvents.map(ev => {
+            // Se non espanso e ci sono più di 2 eventi, mostra solo i primi 2 + la card fumetto "Ancora..."
+            const showCollapsed = !isEventsExpanded && sortedEvents.length > 2;
+            const eventsToRender = showCollapsed ? sortedEvents.slice(0, 2) : sortedEvents;
+
+            let htmlContent = eventsToRender.map(ev => {
                 // Formatta la data bilingue
                 const dateObj = new Date(ev.date);
                 const locale = currentLang === 'it' ? 'it-IT' : 'en-US';
@@ -391,6 +400,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     </article>
                 `;
             }).join('');
+
+            if (showCollapsed) {
+                const bubbleTitle = currentLang === 'it'
+                    ? "Insieme a Geronimo, facciamo tante cose belle!"
+                    : "Together with Geronimo, we do so many beautiful things!";
+                const bubbleText = currentLang === 'it'
+                    ? "Clicca qui per scoprire gli altri incontri della Fondazione nei reparti pediatrici e nelle scuole."
+                    : "Click here to discover other Foundation meetings in pediatric wards and schools.";
+                const labelText = currentLang === 'it' ? "Ancora..." : "More...";
+
+                htmlContent += `
+                    <div class="speech-bubble-wrapper" id="btn-expand-events">
+                        <div class="speech-bubble-card">
+                            <h3 class="event-card-title" style="margin-bottom: 12px; font-size: 1.25rem;">${bubbleTitle}</h3>
+                            <p class="event-card-desc">${bubbleText}</p>
+                        </div>
+                        <div class="speech-bubble-label">${labelText}</div>
+                    </div>
+                `;
+            }
+
+            eventsDisplayGrid.innerHTML = htmlContent;
+
+            // Aggiungi click listener per espandere gli eventi
+            const expandBtn = document.getElementById('btn-expand-events');
+            if (expandBtn) {
+                expandBtn.addEventListener('click', () => {
+                    isEventsExpanded = true;
+                    renderEvents();
+                });
+            }
         }
 
         // 2. Renderizza nel Pannello di Gestione Amministratore

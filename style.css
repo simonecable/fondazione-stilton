@@ -5,21 +5,22 @@
 
 /* Variabili Globali per Colori, Font e Spazi */
 :root {
-    --bg-color: #FFFDF6;       /* Crema morbido, caldo e accogliente */
-    --text-color: #2C3E50;     /* Navy profondo, eccellente leggibilità */
-    --text-muted: #5D6D7E;     /* Grigio neutro per sottotitoli */
-    --primary-color: #F39C12;  /* Oro caldo, solare e allegro */
-    --primary-light: #F1C40F;  /* Giallo solare brillante */
-    --accent-color: #E67E22;   /* Arancio caldo per pulsanti e richiami */
-    --accent-hover: #D35400;   /* Arancio scuro per l'hover */
-    --card-bg: #FFFFFF;        /* Bianco puro per far risaltare i contenuti */
-    --border-color: #EAECEE;   /* Grigio leggerissimo per i bordi */
-    --success-color: #2ECC71;  /* Verde morbido per conferme */
-    --danger-color: #E74C3C;   /* Rosso morbido per eliminazione ed errori */
-    --radius-lg: 16px;         /* Angoli molto arrotondati, amichevoli e morbidi */
+    --bg-color: #FFFFFF;       /* Pure white background */
+    --text-color: #1B4F72;     /* Rich deep blue for readability */
+    --text-muted: #4A6984;     /* Slate blue for subtitles/muted text */
+    --title-color: #C0392B;    /* Classic vibrant red for headings */
+    --primary-color: #C0392B;  /* Vibrant red */
+    --primary-light: #FADBD8;  /* Soft red/pink tint */
+    --accent-color: #C0392B;   /* Vibrant red for accents */
+    --accent-hover: #922B21;   /* Darker red for hover */
+    --card-bg: #FFFFFF;        /* Pure white for cards */
+    --border-color: #EAECEE;   /* Light gray for borders */
+    --success-color: #2ECC71;  /* Soft green for confirmations */
+    --danger-color: #C0392B;   /* Red for errors and deletions */
+    --radius-lg: 16px;         /* Rounded corners */
     --radius-md: 10px;
-    --shadow-soft: 0 8px 24px rgba(243, 156, 18, 0.08); /* Ombra calda e leggera */
-    --shadow-hover: 0 12px 30px rgba(243, 156, 18, 0.15);
+    --shadow-soft: 0 8px 24px rgba(27, 79, 114, 0.08); /* Soft blue shadow */
+    --shadow-hover: 0 12px 30px rgba(27, 79, 114, 0.15);
     --font-main: 'Quicksand', sans-serif;
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -41,6 +42,15 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.section-title,
+.event-card-title,
+.donation-card-title,
+.form-title {
+    color: var(--title-color);
 }
 
 a {
@@ -286,9 +296,9 @@ img {
    CHI SIAMO SECTION (Pura Semplicità)
    ========================================================================== */
 .about-section {
-    background-color: rgba(243, 156, 18, 0.03);
-    border-top: 1px solid rgba(243, 156, 18, 0.05);
-    border-bottom: 1px solid rgba(243, 156, 18, 0.05);
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .about-grid {
@@ -1093,7 +1103,7 @@ img {
     width: 100%;
     height: auto;
     margin: 0 auto 30px auto;
-    filter: drop-shadow(0 8px 16px rgba(243, 156, 18, 0.15));
+    filter: drop-shadow(0 8px 16px rgba(27, 79, 114, 0.1));
 }
 
 .hero-subtitle {
@@ -1120,10 +1130,18 @@ img {
 .author-photo {
     width: 100%;
     max-width: 380px;
-    border-radius: var(--radius-lg);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
     box-shadow: var(--shadow-soft);
     border: 4px solid #FFFFFF;
     object-fit: cover;
+}
+
+.signature-img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 15px 0;
 }
 
 .about-text-col {
@@ -1221,4 +1239,84 @@ img {
     .about-text-col {
         padding: 24px;
     }
+}
+
+/* Playful Speech Bubble Card for Activities */
+.speech-bubble-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.speech-bubble-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 3px solid var(--title-color);
+    border-radius: var(--radius-lg);
+    padding: 30px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+    width: 100%;
+    min-height: 220px;
+    flex-grow: 1;
+}
+
+.speech-bubble-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    background-color: var(--primary-light);
+}
+
+.speech-bubble-card::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 40px;
+    border-width: 16px 16px 0 0;
+    border-style: solid;
+    border-color: var(--title-color) transparent;
+    display: block;
+    width: 0;
+}
+
+.speech-bubble-card::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 43px;
+    border-width: 12px 12px 0 0;
+    border-style: solid;
+    border-color: var(--card-bg) transparent;
+    display: block;
+    width: 0;
+    z-index: 2;
+}
+
+.speech-bubble-card:hover::before {
+    border-color: var(--primary-light) transparent;
+}
+
+.speech-bubble-label {
+    margin-top: 20px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--title-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.speech-bubble-label:hover {
+    color: var(--accent-hover);
+    transform: scale(1.05);
 }
