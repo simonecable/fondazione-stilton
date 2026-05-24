@@ -83,12 +83,12 @@ img {
    HEADER & NAVBAR (Sobria ed Elegante)
    ========================================================================== */
 .site-header {
-    background-color: rgba(255, 253, 246, 0.95);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 2px solid rgba(243, 156, 18, 0.1);
+    border-bottom: 2px solid var(--border-color);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
     padding: 12px 0;
 }
@@ -197,7 +197,7 @@ img {
    HERO SECTION (Allegra e Accattivante)
    ========================================================================== */
 .hero-section {
-    background: radial-gradient(circle at top right, rgba(241, 196, 15, 0.15), rgba(255, 253, 246, 0));
+    background-color: #FFFFFF;
     padding: 100px 20px;
     text-align: center;
 }
