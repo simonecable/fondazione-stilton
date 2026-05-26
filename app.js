@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isEventsExpanded = false; // Stato espansione griglia eventi
     
     let donations = {}; // Memorizza le credenziali di donazione attive
+    const GOOGLE_SCRIPT_URL = ""; // Incolla qui l'URL del Web App di Google Apps Script per sincronizzare i dati online
     const DEFAULT_DONATIONS = {
         beneficiario: "Fondazione Geronimo Stilton",
         iban: "IT99C1234512345123456789012",
@@ -344,8 +345,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- GESTIONE DATI EVENTI (LOCAL STORAGE) ---
+    // Gestione scroll all'inizio per tutti i loghi rettangolari
+    document.addEventListener('click', (e) => {
+        const logoLink = e.target.closest('.scroll-to-top-logo') || e.target.closest('#logo-home');
+        if (logoLink) {
+            e.preventDefault();
+            
+            // Se siamo in vista admin, torna alla vista pubblica (home)
+            if (window.location.hash === '#admin') {
+                window.location.hash = '#home';
+            } else {
+                // Altrimenti aggiorna l'hash a #home e scorri in alto
+                if (window.location.hash !== '#home') {
+                    window.location.hash = '#home';
+                }
+            }
+            
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
+
+    // --- GESTIONE DATI EVENTI (LOCAL STORAGE / GOOGLE SHEETS) ---
+    async function fetchEventsFromBackend() {
+        try {
+            const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getEvents`);
+            if (!response.ok) throw new Error("Network response was not ok");
+            events = await response.json();
+            renderEvents();
+        } catch (err) {
+            console.error("Errore caricamento incontri da backend:", err);
+            // Fallback locale in caso di errore di connessione
+            const stored = localStorage.getItem('fondazione_events') || JSON.stringify(DEFAULT_EVENTS);
+            events = JSON.parse(stored);
+            renderEvents();
+        }
+    }
+
     function loadEvents() {
+        if (GOOGLE_SCRIPT_URL) {
+            fetchEventsFromBackend();
+            return;
+        }
         const stored = localStorage.getItem('fondazione_events');
         if (stored) {
             events = JSON.parse(stored);
@@ -396,6 +439,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             <time datetime="${ev.date}" class="event-date">${formattedDate}</time>
                             <h3 class="event-card-title">${title}</h3>
                             <p class="event-card-desc">${desc}</p>
+                            <div class="event-card-footer">
+                                <a href="#home" class="scroll-to-top-logo" aria-label="Torna all'inizio">
+                                    <img src="logoorizzontale.png" alt="Fondazione Geronimo Stilton" class="logo-img-card" onerror="this.src='https://placehold.co/180x60/f1c40f/2c3e50?text=Fondazione';">
+                                </a>
+                            </div>
                         </div>
                     </article>
                 `;
@@ -463,12 +511,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function deleteEventFromBackend(id) {
+        showToast(currentLang === 'it' ? "Eliminazione sul server..." : "Deleting on server...");
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                body: JSON.stringify({ action: "deleteEvent", id: id })
+            });
+            const result = await response.json();
+            if (result.status === "success") {
+                events = result.events || events;
+                renderEvents();
+                showToast(currentLang === 'it' ? "Incontro eliminato dal server." : "Event deleted from server.");
+            } else {
+                throw new Error(result.message || "Errore");
+            }
+        } catch (err) {
+            console.error("Errore eliminazione backend:", err);
+            alert(currentLang === 'it' ? "Errore nell'eliminazione online." : "Error deleting online.");
+        }
+    }
+
     function deleteEvent(id) {
         const confirmMsg = currentLang === 'it' ? "Sei sicuro di voler eliminare definitivamente questo incontro?" : "Are you sure you want to permanently delete this event?";
         if (confirm(confirmMsg)) {
-            events = events.filter(ev => ev.id !== id);
-            localStorage.setItem('fondazione_events', JSON.stringify(events));
-            renderEvents();
+            if (GOOGLE_SCRIPT_URL) {
+                deleteEventFromBackend(id);
+            } else {
+                events = events.filter(ev => ev.id !== id);
+                localStorage.setItem('fondazione_events', JSON.stringify(events));
+                renderEvents();
+            }
         }
     }
 
@@ -553,15 +626,41 @@ document.addEventListener('DOMContentLoaded', () => {
             img: compressedImageBase64
         };
 
-        events.push(newEvent);
-        localStorage.setItem('fondazione_events', JSON.stringify(events));
-        
-        addEventForm.reset();
-        resetImageUpload();
-        renderEvents();
-        
-        const successMsg = currentLang === 'it' ? "Incontro salvato e pubblicato con successo!" : "Event saved and published successfully!";
-        alert(successMsg);
+        if (GOOGLE_SCRIPT_URL) {
+            saveEventToBackend(newEvent);
+        } else {
+            events.push(newEvent);
+            localStorage.setItem('fondazione_events', JSON.stringify(events));
+            addEventForm.reset();
+            resetImageUpload();
+            renderEvents();
+            const successMsg = currentLang === 'it' ? "Incontro salvato e pubblicato con successo!" : "Event saved and published successfully!";
+            alert(successMsg);
+        }
+    });
+
+    async function saveEventToBackend(newEvent) {
+        showToast(currentLang === 'it' ? "Salvataggio sul server..." : "Saving to server...");
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                body: JSON.stringify({ action: "addEvent", event: newEvent })
+            });
+            const result = await response.json();
+            if (result.status === "success") {
+                events = result.events || events;
+                renderEvents();
+                addEventForm.reset();
+                resetImageUpload();
+                const successMsg = currentLang === 'it' ? "Incontro salvato e pubblicato con successo!" : "Event saved and published successfully!";
+                alert(successMsg);
+            } else {
+                throw new Error(result.message || "Errore");
+            }
+        } catch (err) {
+            console.error("Errore salvataggio backend:", err);
+            alert(currentLang === 'it' ? "Errore nel salvataggio online." : "Error saving online.");
+        }
     });
 
     // --- FORM CONTATTI PUBBLICO (BILINGUE) ---
@@ -602,8 +701,29 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.hash = '#home'; // Riporta alla home
     });
 
-    // --- GESTIONE DATI DONAZIONI (LOCAL STORAGE) ---
+    // --- GESTIONE DATI DONAZIONI (LOCAL STORAGE / GOOGLE SHEETS) ---
+    async function fetchDonationsFromBackend() {
+        try {
+            const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getDonations`);
+            if (!response.ok) throw new Error("Network response was not ok");
+            donations = await response.json();
+            renderDonations();
+            populateAdminDonationsForm();
+        } catch (err) {
+            console.error("Errore caricamento donazioni da backend:", err);
+            // Fallback locale in caso di errore di connessione
+            const stored = localStorage.getItem('fondazione_donations') || JSON.stringify(DEFAULT_DONATIONS);
+            donations = JSON.parse(stored);
+            renderDonations();
+            populateAdminDonationsForm();
+        }
+    }
+
     function loadDonations() {
+        if (GOOGLE_SCRIPT_URL) {
+            fetchDonationsFromBackend();
+            return;
+        }
         const stored = localStorage.getItem('fondazione_donations');
         if (stored) {
             donations = JSON.parse(stored);
@@ -737,13 +857,39 @@ document.addEventListener('DOMContentLoaded', () => {
             donations.paypalLink = document.getElementById('admin-don-paypal-link').value.trim();
             donations.stripeLink = document.getElementById('admin-don-stripe-link').value.trim();
 
-            localStorage.setItem('fondazione_donations', JSON.stringify(donations));
-            renderDonations();
-            
-            showToast(TRANSLATIONS[currentLang].toast_saved);
-            const successMsg = currentLang === 'it' ? "Credenziali e link di donazione aggiornati con successo!" : "Donation credentials and links successfully updated!";
-            alert(successMsg);
+            if (GOOGLE_SCRIPT_URL) {
+                saveDonationsToBackend(donations);
+            } else {
+                localStorage.setItem('fondazione_donations', JSON.stringify(donations));
+                renderDonations();
+                showToast(TRANSLATIONS[currentLang].toast_saved);
+                const successMsg = currentLang === 'it' ? "Credenziali e link di donazione aggiornati con successo!" : "Donation credentials and links successfully updated!";
+                alert(successMsg);
+            }
         });
+    }
+
+    async function saveDonationsToBackend(updatedDonations) {
+        showToast(currentLang === 'it' ? "Salvataggio credenziali..." : "Saving credentials...");
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                body: JSON.stringify({ action: "saveDonations", donations: updatedDonations })
+            });
+            const result = await response.json();
+            if (result.status === "success") {
+                donations = result.donations || donations;
+                renderDonations();
+                showToast(TRANSLATIONS[currentLang].toast_saved);
+                const successMsg = currentLang === 'it' ? "Credenziali e link di donazione aggiornati con successo!" : "Donation credentials and links successfully updated!";
+                alert(successMsg);
+            } else {
+                throw new Error(result.message || "Errore");
+            }
+        } catch (err) {
+            console.error("Errore salvataggio donazioni:", err);
+            alert(currentLang === 'it' ? "Errore nel salvataggio delle donazioni online." : "Error saving donations online.");
+        }
     }
 
     // Controlla il login per popolare correttamente il form donazioni admin se l'utente accede direttamente

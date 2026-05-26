@@ -1320,3 +1320,78 @@ img {
     color: var(--accent-hover);
     transform: scale(1.05);
 }
+
+/* ==========================================================================
+   STILI PER LOGHI DI RITORNO A INIZIO PAGINA (SCROLL TO TOP)
+   ========================================================================== */
+.middle-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.logo-img-middle {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition-smooth);
+    opacity: 0.85;
+}
+
+.logo-img-middle:hover {
+    transform: scale(1.08);
+    opacity: 1;
+    filter: drop-shadow(0 6px 15px rgba(192, 57, 43, 0.18));
+}
+
+.event-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.logo-img-card {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition-smooth);
+    opacity: 0.75;
+}
+
+.logo-img-card:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    filter: drop-shadow(0 2px 6px rgba(192, 57, 43, 0.12));
+}
+
+.footer-logo-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.logo-img-footer {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition-smooth);
+    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 8px 18px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.logo-img-footer:hover {
+    transform: scale(1.08);
+    opacity: 1;
+    background-color: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
