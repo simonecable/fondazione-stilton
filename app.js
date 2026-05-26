@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isEventsExpanded = false; // Stato espansione griglia eventi
     
     let donations = {}; // Memorizza le credenziali di donazione attive
-    const GOOGLE_SCRIPT_URL = ""; // Incolla qui l'URL del Web App di Google Apps Script per sincronizzare i dati online
+    const GOOGLE_SCRIPT_URL = "https://scorer.rideon.id/stilton-api/"; // URL del backend API su VPS per sincronizzare i dati online
     const DEFAULT_DONATIONS = {
         beneficiario: "Fondazione Geronimo Stilton",
         iban: "IT99C1234512345123456789012",
